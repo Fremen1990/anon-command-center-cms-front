@@ -5,7 +5,7 @@ export const createProject = (userId, token, name) => {
   console.log("User ID", userId);
   console.log("token ", token);
   console.log("Project Name", name);
-  return fetch(`${API}category/create/${userId}`, {
+  return fetch(`${API}/category/create/${userId}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -27,7 +27,7 @@ export const createArticle = (userId, token, article) => {
   // console.log("User ID",userId)
   // console.log("token ",token)
   // console.log("Project Name",article)
-  return fetch(`${API}article/create/${userId}`, {
+  return fetch(`${API}/article/create/${userId}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -44,7 +44,7 @@ export const createArticle = (userId, token, article) => {
 };
 
 export const getCategories = () => {
-  return fetch(`${API}categories`, {
+  return fetch(`${API}/categories`, {
     method: "GET",
   })
     .then((response) => {
@@ -60,7 +60,7 @@ export const getCategories = () => {
 // 4 delete single article
 
 export const getArticles = () => {
-  return fetch(`${API}articles?limit=100`, {
+  return fetch(`${API}/articles?limit=100`, {
     method: "GET",
   })
     .then((response) => {
@@ -85,7 +85,7 @@ export const deleteArticle = (articleId, userId, token) => {
 };
 
 export const getArticle = (articleId) => {
-  return fetch(`${API}article/${articleId}`, {
+  return fetch(`${API}/article/${articleId}`, {
     method: "GET",
   })
     .then((response) => {
@@ -95,7 +95,7 @@ export const getArticle = (articleId) => {
 };
 
 export const updateArticle = (articleId, userId, token, article) => {
-  return fetch(`${API}article/${articleId}/${userId}`, {
+  return fetch(`${API}/article/${articleId}/${userId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",

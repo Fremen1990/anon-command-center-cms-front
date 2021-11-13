@@ -2,7 +2,7 @@ import { API } from "../config";
 import queryString from "query-string";
 
 export const getArticles = (sortBy) => {
-  return fetch(`${API}articles?sort_by=${sortBy}&order=desc&limit=6`, {
+  return fetch(`${API}/articles?sort_by=${sortBy}&order=desc&limit=6`, {
     method: "GET",
   })
     .then((response) => {
@@ -12,7 +12,7 @@ export const getArticles = (sortBy) => {
 };
 
 export const getCategories = () => {
-  return fetch(`${API}categories`, {
+  return fetch(`${API}/categories`, {
     method: "GET",
   })
     .then((response) => {
@@ -22,7 +22,7 @@ export const getCategories = () => {
 };
 
 export const getCategory = (categoryId) => {
-  return fetch(`${API}category/${categoryId}`, {
+  return fetch(`${API}/category/${categoryId}`, {
     method: "GET",
   })
     .then((response) => {
@@ -32,7 +32,7 @@ export const getCategory = (categoryId) => {
 };
 
 export const getApproved = (articleId) => {
-  return fetch(`${API}article/${articleId}`, {
+  return fetch(`${API}/article/${articleId}`, {
     method: "GET",
   })
     .then((response) => {
@@ -42,7 +42,7 @@ export const getApproved = (articleId) => {
 };
 
 export const getUsers = () => {
-  return fetch(`${API}users`, {
+  return fetch(`${API}/users`, {
     method: "GET",
   })
     .then((response) => {
@@ -52,7 +52,7 @@ export const getUsers = () => {
 };
 
 // export const getUser = (categoryId) => {
-//     return fetch(`${API}category/${categoryId}`, {
+//     return fetch(`${API}/category/${categoryId}`, {
 //         method: "GET",
 //     })
 //         .then((response) => {
@@ -68,7 +68,7 @@ export const getFilteredArticles = (skip, limit, filters = {}) => {
     filters,
   };
 
-  return fetch(`${API}articles/by/search`, {
+  return fetch(`${API}/articles/by/search`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -89,7 +89,7 @@ export const list = (params) => {
 
   console.log("query", query);
 
-  return fetch(`${API}articles/search?${query}`, {
+  return fetch(`${API}/articles/search?${query}`, {
     method: "GET",
   })
     .then((response) => {
@@ -99,7 +99,7 @@ export const list = (params) => {
 };
 
 export const read = (articleId) => {
-  return fetch(`${API}article/${articleId}`, {
+  return fetch(`${API}/article/${articleId}`, {
     method: "GET",
   })
     .then((response) => {
@@ -109,7 +109,7 @@ export const read = (articleId) => {
 };
 
 export const createArticle = (userId, token, createArticleData) => {
-  return fetch(`${API}article-entry/create/${userId}`, {
+  return fetch(`${API}/article-entry/create/${userId}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
