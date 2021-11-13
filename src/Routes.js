@@ -19,6 +19,7 @@ import AdminDashboard from "./user/AdminDashboard";
 import Article from "./core/Article";
 import UpdateArticle from "./admin/UpdateArticle";
 import UserDashboard from "./user/UserDashboard";
+import AddCategory from "./admin/AddCategory";
 
 const Routes = () => {
   return (
@@ -45,6 +46,7 @@ const Routes = () => {
           component={UserArticles}
         />
         <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
+        <AdminRoute path="/create/category" exact component={AddCategory} />
         <AdminRoute path="/create/project" exact component={AddProject} />
         <AdminRoute path="/create/user" exact component={AddUser} />
         <PrivateRoute path="/profile/:userId" exact component={UserProfile} />

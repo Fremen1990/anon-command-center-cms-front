@@ -1,5 +1,28 @@
 import { API } from "../config";
 
+export const createCategory = (userId, token, name) => {
+  // console.log(name, email, password)
+  // console.log("User ID", userId);
+  // console.log("token ", token);
+  // console.log("Project Name", name);
+  return fetch(`${API}/category/create/${userId}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(name),
+  })
+      .then((response) => {
+        return response.json();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+};
+
+
 export const createProject = (userId, token, name) => {
   // console.log(name, email, password)
   console.log("User ID", userId);
