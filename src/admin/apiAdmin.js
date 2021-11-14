@@ -14,14 +14,13 @@ export const createCategory = (userId, token, name) => {
     },
     body: JSON.stringify(name),
   })
-      .then((response) => {
-        return response.json();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
-
 
 export const createProject = (userId, token, name) => {
   // console.log(name, email, password)
@@ -93,7 +92,7 @@ export const getArticles = () => {
 };
 
 export const deleteArticle = (articleId, userId, token) => {
-  return fetch(`${API}article/${articleId}/${userId}`, {
+  return fetch(`${API}/article/${articleId}/${userId}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",

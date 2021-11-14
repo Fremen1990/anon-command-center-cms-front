@@ -3,11 +3,19 @@
     background: linear-gradient(-45deg, #411ce1, #6ce73c, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
-    height: 100vh;
+    height: 90vh;
+}
+
+#login_header{
+    height:10vh;
 }
 
 #btn-sign-in{
     height:10%;
+}
+
+.signout{
+    text-align:center;
 }
 
 @keyframes gradient {

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
 import devThomasLogo from "../assets/TS.png";
-import { API } from "../config";
 
 const Menu = ({ history }) => {
   const user = isAuthenticated().user;

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
-import { signin, authenticate, isAuthenticated } from "../auth/index";
+import { signin, authenticate, isAuthenticated, signout } from "../auth/index";
 import "./signIn.css";
+import devThomasLogo from "../assets/TS.png";
 
 const SignIn = () => {
   const [values, setValues] = useState({
@@ -97,26 +98,48 @@ const SignIn = () => {
     if (redirectToReferer) {
       if (user && user.access === 1) {
         return <Redirect to="/admin/dashboard" />;
-      } else {
+      } else if (user && user.access === 0) {
         return <Redirect to="/user/dashboard" />;
       }
     }
     if (isAuthenticated()) {
-      return <Redirect to="/" />;
+      return <Redirect to="/signin" />;
     }
   };
 
   return (
     <>
-      <div className="jumbotron vh-100 custom-gradient d-flex ">
-        <div className="container vh-50 align-self-center">
-          <div className="row ">
-            <div className="col-md-4 offset-4 ">
-              {showLoading()}
-              {showError()}
-              {singInForm()}
-              {redirectUser()}
-              {/*{JSON.stringify(values)}*/}
+      <div className="jumbotron d-flex row m-0">
+        <nav
+          id="login_header"
+          className="navbar navbar-expand-sm navbar-dark bg-dark bg-gradient p0 d-flex justify-content-center"
+        >
+          <Link className="navbar-brand" to="#">
+            ANON Articles Command Center
+            <a target={"_blank"} href={"https://www.devthomas.pl/"}>
+              <span className="badge bg-secondary p-1 mx-3">
+                by DevThomas
+                <img
+                  className="mx-1"
+                  src={devThomasLogo}
+                  alt="devthomas"
+                  style={{ maxHeight: "20%", maxWidth: "20%" }}
+                />{" "}
+              </span>
+            </a>
+          </Link>
+        </nav>
+
+        <div className="custom-gradient d-flex p-0">
+          <div className="container  align-self-center">
+            <div className="row ">
+              <div className="col-md-6 offset-3 ">
+                {showLoading()}
+                {showError()}
+                {singInForm()}
+                {redirectUser()}
+                {/*{JSON.stringify(values)}*/}
+              </div>
             </div>
           </div>
         </div>

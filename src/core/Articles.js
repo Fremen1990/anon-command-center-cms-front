@@ -8,8 +8,6 @@ import { getArticles, deleteArticle } from "../admin/apiAdmin";
 import { isAuthenticated } from "../auth";
 
 const Articles = () => {
-  // const user = isAuthenticated();
-
   const [myFilters, setMyFilters] = useState({
     filters: {
       category: [],
