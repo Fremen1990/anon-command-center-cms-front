@@ -81,8 +81,8 @@ export const getCategories = () => {
 // 3 update single article
 // 4 delete single article
 
-export const getArticles = () => {
-  return fetch(`${API}/articles?limit=100`, {
+export const getArticles = (sortBy, limit = 6) => {
+  return fetch(`${API}/articles?sort_by=${sortBy}&order=desc&limit=${limit}`, {
     method: "GET",
   })
     .then((response) => {
@@ -124,6 +124,21 @@ export const updateArticle = (articleId, userId, token, article) => {
       Authorization: `Bearer ${token}`,
     },
     body: article,
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+export const deleteUser = (user_idToDelete, userId, token) => {
+  return fetch(`${API}/user/${user_idToDelete}/${userId}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   })
     .then((response) => {
       return response.json();

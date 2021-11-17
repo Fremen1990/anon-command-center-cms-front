@@ -11,21 +11,25 @@ const Menu = ({ history }) => {
       {/*<!-------------- NAVBAR ------------------>*/}
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark bg-gradient p0">
         <div className="container">
-          <Link
-            className="navbar-brand"
-            to={user.access === 1 ? "/admin/dashboard" : "/user/dashboard"}
-          >
-            ANON Articles Command Center
-            <span className="badge bg-secondary p-1">
-              by DevThomas
-              <img
-                className="mx-1"
-                src={devThomasLogo}
-                alt="devthomas"
-                style={{ maxHeight: "20%", maxWidth: "20%" }}
-              />{" "}
-            </span>
-          </Link>
+          <div>
+            <Link
+              className="navbar-brand"
+              to={user.access === 1 ? "/admin/dashboard" : "/user/dashboard"}
+            >
+              ANON Articles Command Center
+            </Link>
+            <a target={"_blank"} href={"https://www.devthomas.pl/"}>
+              <button className="btn btn-secondary badge">
+                by DevThomas
+                <img
+                  className="mx-1"
+                  src={devThomasLogo}
+                  alt="devthomas"
+                  style={{ maxHeight: "25%", maxWidth: "25%" }}
+                />{" "}
+              </button>
+            </a>
+          </div>
 
           <button
             className="navbar-toggler"
@@ -38,7 +42,7 @@ const Menu = ({ history }) => {
           <ul className="navbar-nav">
             {user.access === 1 ? (
               <li className="nav-item px-2 bg-warning">
-                <Link className="nav-link text-dark" to="/admin/dashboard">
+                <Link className="nav-link text-dark " to="/admin/dashboard">
                   Admin Dashboard
                 </Link>
               </li>
@@ -122,7 +126,7 @@ const Menu = ({ history }) => {
                     className="nav-link"
                     onClick={() =>
                       signout(() => {
-                        history.push("/signin");
+                        history.push("/signout");
                       })
                     }
                   >

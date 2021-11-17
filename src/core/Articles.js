@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CountUp from "react-countup";
 import Layout from "./Layout";
 import ArticleItem from "./ArticleItem";
 import { getCategories, getFilteredArticles } from "./apiCore";
@@ -16,35 +17,33 @@ const Articles = () => {
   });
 
   const [categories, setCategories] = useState([]);
-  // const [articlesByArrival, setArticlesByArrival] = useState([]);
   const [error, setError] = useState(false);
-  const [limit, setLimit] = useState("");
+  const [limit, setLimit] = useState(25);
   const [skip, setSkip] = useState(0);
   const [size, setSize] = useState(0);
   const [filteredResults, setFilteredResults] = useState(0);
+  // const [articles, setArticles] = useState([]);
 
   const { user, token } = isAuthenticated();
 
-  // const loadArticlesByArrival = () => {
-  //   getArticles("createdAt").then((data) => {
+  // const loadArticles = () => {
+  //   getArticles().then((data) => {
   //     if (data.error) {
   //       setError(data.error);
   //     } else {
-  //       setArticlesByArrival(data);
-  //       // console.log("data size: ",data.length)
-  //       // setSize(data.length)
+  //       setArticles(data);
   //     }
   //   });
   // };
 
-  const [articles, setArticles] = useState([]);
+  const [articlesByArrival, setArticlesByArrival] = useState([]);
 
-  const loadArticles = () => {
-    getArticles().then((data) => {
+  const loadArticlesByArrival = () => {
+    getArticles("createdAt", limit).then((data) => {
       if (data.error) {
         setError(data.error);
       } else {
-        setArticles(data);
+        setArticlesByArrival(data);
       }
     });
   };
@@ -55,7 +54,8 @@ const Articles = () => {
       if (data.error) {
         console.log(data.error);
       } else {
-        loadArticles();
+        // loadArticles();
+        loadArticlesByArrival();
       }
     });
   };
@@ -131,10 +131,11 @@ const Articles = () => {
 
   useEffect(() => {
     init();
-    loadArticles();
+    loadArticlesByArrival();
+
+    // loadArticles();
 
     loadFilteredResults(skip, limit, myFilters.filters);
-    // loadArticlesByArrival();
   }, [""]);
 
   return (
@@ -150,18 +151,31 @@ const Articles = () => {
                 <table className="table table-striped table-hover">
                   <thead className="bg-secondary text-light">
                     <tr>
-                      <th>Status</th>
-                      <th>Photo</th>
-                      <th>Title</th>
-                      <th>Author</th>
-                      {/*<th>Category</th>*/}
-                      <th>Date</th>
-                      <th>See details</th>
-                      <th>Update</th>
-                      <th>Delete</th>
-
-                      <th>Approve to publish</th>
-                      <th>Reject article</th>
+                      {user.access === 1 ? (
+                        <>
+                          <th>Status</th>
+                          <th>Photo</th>
+                          <th>Title</th>
+                          <th>Author</th>
+                          {/*<th>Category</th>*/}
+                          <th>Date</th>
+                          <th>See details</th>
+                          <th>Update</th>
+                          <th>Delete</th>
+                          <th>Approve to publish</th>
+                          <th>Reject article</th>
+                        </>
+                      ) : (
+                        <>
+                          <th>Status</th>
+                          <th>Photo</th>
+                          <th>Title</th>
+                          <th>Author</th>
+                          {/*<th>Category</th>*/}
+                          <th>Date</th>
+                          <th>See details</th>
+                        </>
+                      )}
                     </tr>
                   </thead>
                   <tbody>
@@ -179,7 +193,7 @@ const Articles = () => {
                     {/*  // ))*/}
                     {/*}*/}
 
-                    {articles.map((article, i) => (
+                    {articlesByArrival.map((article, i) => (
                       <ArticleItem
                         key={i}
                         article={article}
@@ -200,7 +214,13 @@ const Articles = () => {
                     <div className="card-body">
                       <h3>Articles</h3>
                       <h4 className="display-4">
-                        <i className="fas fa-pencil-alt"></i> {articles.length}
+                        <i className="fas fa-pencil-alt"></i>{" "}
+                        <CountUp
+                          delay={5}
+                          start={0}
+                          end={articlesByArrival.length}
+                          duration={0.5}
+                        />
                       </h4>
                     </div>
                   </div>

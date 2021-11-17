@@ -116,18 +116,18 @@ const SignIn = () => {
         >
           <Link className="navbar-brand" to="#">
             ANON Articles Command Center
-            <a target={"_blank"} href={"https://www.devthomas.pl/"}>
-              <span className="badge bg-secondary p-1 mx-3">
-                by DevThomas
-                <img
-                  className="mx-1"
-                  src={devThomasLogo}
-                  alt="devthomas"
-                  style={{ maxHeight: "20%", maxWidth: "20%" }}
-                />{" "}
-              </span>
-            </a>
           </Link>
+          <a target={"_blank"} href={"https://www.devthomas.pl/"}>
+            <button className="btn btn-secondary badge">
+              by DevThomas
+              <img
+                className="mx-1"
+                src={devThomasLogo}
+                alt="devthomas"
+                style={{ maxHeight: "25%", maxWidth: "25%" }}
+              />{" "}
+            </button>
+          </a>
         </nav>
 
         <div className="custom-gradient d-flex p-0">

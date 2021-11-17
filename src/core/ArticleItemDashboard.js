@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ShowImage from "./ShowImage";
 import { isAuthenticated } from "../auth";
-import { deleteArticle } from "../admin/apiAdmin";
 
-const ArticleItem = ({ article, destroy }) => {
+const ArticleItemDashboard = ({ article, destroy }) => {
   // const [category, setCategory] = useState([]);
   // const [error, setError] = useState(false);
 
@@ -41,24 +40,6 @@ const ArticleItem = ({ article, destroy }) => {
             <i className="fas fa-search"></i> Details
           </Link>
         </td>
-        <td className={`${user.user.access === 1 ? "d-table-cell" : "d-none"}`}>
-          <Link
-            to={`/admin/article/update/${article._id}`}
-            className="btn btn-warning "
-          >
-            <i className="fas fa-edit"></i>
-            <span className="bg-warning badge h-100 d-block">Update</span>
-          </Link>
-        </td>
-
-        <td className={`${user.user.access === 1 ? "d-table-cell" : "d-none"}`}>
-          <button
-            className="btn btn-danger"
-            onClick={() => destroy(article._id)}
-          >
-            <i className="fa fa-trash" aria-hidden="true"></i> Delete
-          </button>
-        </td>
 
         <td className={`${user.user.access === 1 ? "d-table-cell" : "d-none"}`}>
           <button className="btn btn-success">
@@ -67,8 +48,8 @@ const ArticleItem = ({ article, destroy }) => {
           </button>
         </td>
         <td className={`${user.user.access === 1 ? "d-table-cell" : "d-none"}`}>
-          <button className="btn btn-danger">
-            <i className="fa fa-times" aria-hidden="true"></i>
+          <button className="btn btn-danger h-100">
+            <i className="fa fa-times d-block" aria-hidden="true"></i>
             Reject
           </button>
         </td>
@@ -76,4 +57,4 @@ const ArticleItem = ({ article, destroy }) => {
     </>
   );
 };
-export default ArticleItem;
+export default ArticleItemDashboard;

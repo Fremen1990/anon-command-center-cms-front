@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getArticles } from "./apiCore";
 import ArticleItem from "./ArticleItem";
+import ArticleItemDashboard from "./ArticleItemDashboard";
 
-const ArticlesList = ({ article }) => {
+const ArticlesList = () => {
   const [articlesByArrival, setArticlesByArrival] = useState([]);
   const [error, setError] = useState(false);
 
@@ -35,15 +36,19 @@ const ArticlesList = ({ article }) => {
                 <th>Photo</th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Category</th>
+                {/*<th>Category</th>*/}
                 <th>Date</th>
                 <th>See details</th>
+                <th>Approve to publish</th>
+                <th>Reject article</th>
               </tr>
             </thead>
             <tbody>
               {articlesByArrival.map((article, i) => (
-                <ArticleItem key={i} article={article} />
+                <ArticleItemDashboard key={i} article={article} />
               ))}
+
+              {JSON.stringify(articlesByArrival.length)}
             </tbody>
           </table>
         </div>

@@ -108,7 +108,6 @@ const UserProfile = (props) => {
         <div className="card">
           <div className="card header p-3">
             <h4>Your Profile</h4>
-            {JSON.stringify(values)}
             {/*{JSON.stringify(photo)}*/}
           </div>
 
@@ -205,8 +204,6 @@ const UserProfile = (props) => {
         <div className="card">
           <div className="card header p-3">
             <h4>Edit Your Profile</h4>
-
-            {/*{JSON.stringify(values)}*/}
           </div>
 
           <div className="card-body">

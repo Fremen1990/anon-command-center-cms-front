@@ -4,6 +4,8 @@ import { API } from "../config";
 import { getArticles, getUsers } from "./apiCore";
 import ArticleItem from "./ArticleItem";
 import UserItem from "./UserItem";
+import { isAuthenticated } from "../auth";
+import { deleteUser } from "../admin/apiAdmin";
 
 const Users = ({ user }) => {
   const [users, setUsers] = useState([]);
@@ -15,6 +17,25 @@ const Users = ({ user }) => {
         setError(data.error);
       } else {
         setUsers(data);
+      }
+    });
+  };
+
+  const isAdmin = isAuthenticated().user.access;
+  const userId = isAuthenticated().user._id;
+  const adminId = isAuthenticated().user._id;
+
+  const { token } = isAuthenticated();
+
+  const destroyUser = (user_idToDelete) => {
+    // ask about confirmation
+    deleteUser(user_idToDelete, userId, token).then((data) => {
+      loadUsers();
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        loadUsers();
+        // loadArticlesByArrival();
       }
     });
   };
@@ -49,7 +70,11 @@ const Users = ({ user }) => {
                     <tbody>
                       {users.map((user, i) => (
                         // JSON.stringify(user)
-                        <UserItem key={i} user={user} />
+                        <UserItem
+                          key={i}
+                          user={user}
+                          destroyUser={destroyUser}
+                        />
                       ))}
 
                       {/*<tr>*/}
