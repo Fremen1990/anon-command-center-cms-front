@@ -139,6 +139,8 @@ const UpdateArticle = ({ match }) => {
             loading: false,
             createdArticle: data.name,
             redirectToArticle: true,
+
+
           });
         }
       }
