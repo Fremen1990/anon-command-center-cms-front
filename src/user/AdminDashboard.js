@@ -113,7 +113,7 @@ const AdminDashboard = () => {
                   <div className="card-body">
                     <h3>Users</h3>
                     <h4 className="display-4">
-                      <i className="fas fa-users"></i> 999
+                      <i className="fas fa-users"></i> 99
                     </h4>
                     <Link to="/users" className="btn btn-outline-light btn-sm">
                       View

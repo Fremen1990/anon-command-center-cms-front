@@ -28,7 +28,7 @@ const ArticleItem = ({ article, destroy, dashboardView }) => {
   const user = isAuthenticated();
   const { token } = isAuthenticated();
 
-  //////// APPROVAL WORKFLOW
+  //////// APPROVAL WORKFLOW---------------
 
   const [values, setValues] = useState({
     name: "",
