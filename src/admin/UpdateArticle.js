@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../core/Layout";
 import { isAuthenticated } from "../auth";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { getArticle, getCategories, updateArticle } from "./apiAdmin";
 
 const UpdateArticle = ({ match }) => {
@@ -48,7 +48,7 @@ const UpdateArticle = ({ match }) => {
     category,
     author,
     articleDate,
-    photo,
+    // photo,
     loading,
     error,
     createdArticle,
@@ -78,7 +78,7 @@ const UpdateArticle = ({ match }) => {
           paragraph10: data.paragraph10,
           author: data.author,
           articleDate: data.articleDate,
-          photo: data.photo,
+          // photo: data.photo,
           approved: data.approved,
           loading: false,
           createdArticle: data.name,
@@ -139,8 +139,6 @@ const UpdateArticle = ({ match }) => {
             loading: false,
             createdArticle: data.name,
             redirectToArticle: true,
-
-
           });
         }
       }
@@ -302,9 +300,15 @@ const UpdateArticle = ({ match }) => {
 
       {/*<button className="btn-success" onClick={addParagrapth}>Add Paragraph</button>*/}
 
-      <button className="btn btn-outline-warning" onClick={clickSubmit}>
+      <button
+        className="btn btn-outline-warning"
+        onClick={clickSubmit}
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
         Update Article
       </button>
+      {redirectUser()}
     </form>
   );
 
@@ -330,11 +334,69 @@ const UpdateArticle = ({ match }) => {
     loading && <div className="alert alert-success">Loading...</div>;
 
   const redirectUser = () => {
-    if (redirectToArticle) {
-      if (!error) {
-        return <Redirect to={`/article/${match.params.articleId}`} />;
-      }
-    }
+    return (
+      <>
+        {/*<button*/}
+        {/*  type="button"*/}
+        {/*  className="btn btn-primary"*/}
+        {/*  data-bs-toggle="modal"*/}
+        {/*  data-bs-target="#exampleModal"*/}
+        {/*>*/}
+        {/*  Launch demo modal*/}
+        {/*</button>*/}
+
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                Article has been updated successfully 😎
+              </div>
+              <div class="modal-footer">
+                <Link to={"/admin/AddArticle"}></Link>
+                {/*<Link to={`/article/${match.params.articleId}`}>*/}
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  data-bs-dismiss="modal"
+                  onClick={() => window.location.reload(false)}
+                >
+                  OK
+                </button>
+                {/*</Link>*/}
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+
+    // if (redirectToArticle) {
+    //   if (!error) {
+    //     return <Redirect to={`/articles`} />;
+    //   }
+    // }
   };
 
   return (
@@ -343,13 +405,13 @@ const UpdateArticle = ({ match }) => {
       description="Article desc"
       headerColor="bg-warning"
     >
+      {JSON.stringify(match.params.articleId)}
       <div className="row">
         <div className="col-md-8 offset-md-2">
           {showLoading()}
           {showSuccess()}
           {showError()}
           {newPostForm()}
-          {redirectUser()}
         </div>
       </div>
     </Layout>

@@ -64,7 +64,11 @@ const AdminDashboard = () => {
                     </thead>
                     <tbody>
                       {displayedArticles.map((article, i) => (
-                        <ArticleItemDashboard key={i} article={article} />
+                        <ArticleItem
+                          key={i}
+                          article={article}
+                          dashboardView={"dashboardView"}
+                        />
                       ))}
                     </tbody>
                   </table>
@@ -94,7 +98,7 @@ const AdminDashboard = () => {
                   <div className="card-body">
                     <h3>Projects</h3>
                     <h4 className="display-4">
-                      <i className="fas fa-folder"></i> 6
+                      <i className="fas fa-folder"></i> 3
                     </h4>
                     <Link
                       to="/projects"
@@ -109,7 +113,7 @@ const AdminDashboard = () => {
                   <div className="card-body">
                     <h3>Users</h3>
                     <h4 className="display-4">
-                      <i className="fas fa-users"></i> 6
+                      <i className="fas fa-users"></i> 999
                     </h4>
                     <Link to="/users" className="btn btn-outline-light btn-sm">
                       View

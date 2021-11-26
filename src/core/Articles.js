@@ -7,6 +7,7 @@ import Checkbox from "./Checkbox";
 import Search from "./Search";
 import { getArticles, deleteArticle } from "../admin/apiAdmin";
 import { isAuthenticated } from "../auth";
+import { Link } from "react-router-dom";
 
 const Articles = () => {
   const [myFilters, setMyFilters] = useState({
