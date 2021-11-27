@@ -180,28 +180,29 @@ const Articles = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {/*{*/}
-                    {/*  myFilters.filters.category != ""*/}
-                    {/*    ? filteredResults.map((article, i) => (*/}
-                    {/*        <ArticleItem key={i} article={article} />*/}
-                    {/*      ))*/}
-                    {/*    : articles.map((article, i) => (*/}
-                    {/*        <ArticleItem key={i} article={article} />*/}
-                    {/*      ))*/}
+                    {
+                      myFilters.filters.category != ""
+                        ? filteredResults.map((article, i) => (
+                            <ArticleItem key={i} article={article} />
+                          ))
+                        : articlesByArrival.map((article, i) => (
+                            <ArticleItem key={i} article={article} />
+                          ))}
 
                     {/*  // articlesByArrival.map((article, i) => (*/}
                     {/*  //   <ArticleItem key={i} article={article} />*/}
                     {/*  // ))*/}
                     {/*}*/}
 
-                    {articlesByArrival.map((article, i) => (
-                      <ArticleItem
-                        key={i}
-                        article={article}
-                        destroy={destroy}
-                        user={user}
-                      />
-                    ))}
+                    {/*{articlesByArrival.map((article, i) => (*/}
+                    {/*  <ArticleItem*/}
+                    {/*    key={i}*/}
+                    {/*    article={article}*/}
+                    {/*    destroy={destroy}*/}
+                    {/*    user={user}*/}
+                    {/*  />*/}
+                    {/*))}*/}
+
                   </tbody>
                 </table>
                 {/*{loadMoreButton()}*/}
@@ -235,28 +236,29 @@ const Articles = () => {
                     }
                   />
 
-                  <h4 className="d-flex my-3">Filter by status</h4>
+                   {/*FILTER BY STATUS*/}
+                  {/*<h4 className="d-flex my-3">Filter by status</h4>*/}
 
-                  {/*<CheckboxApproved approved={approved}*/}
-                  {/*                  handleFilter={filters => (handleFilter(filters, 'approved'))}/>*/}
+                  {/*/!*<CheckboxApproved approved={approved}*!/*/}
+                  {/*/!*                  handleFilter={filters => (handleFilter(filters, 'approved'))}/>*!/*/}
 
-                  <ul className="p-0">
-                    <li className="list-unstyled my-2">
-                      <input
-                        type="checkbox"
-                        className="form-check-input mx-2"
-                      />
-                      <label className="form-check-lable">Approved</label>
-                    </li>
+                  {/*<ul className="p-0">*/}
+                  {/*  <li className="list-unstyled my-2">*/}
+                  {/*    <input*/}
+                  {/*      type="checkbox"*/}
+                  {/*      className="form-check-input mx-2"*/}
+                  {/*    />*/}
+                  {/*    <label className="form-check-lable">Approved</label>*/}
+                  {/*  </li>*/}
 
-                    <li className="list-unstyled my-2">
-                      <input
-                        type="checkbox"
-                        className="form-check-input mx-2"
-                      />
-                      <label className="form-check-lable">Not approved</label>
-                    </li>
-                  </ul>
+                  {/*  <li className="list-unstyled my-2">*/}
+                  {/*    <input*/}
+                  {/*      type="checkbox"*/}
+                  {/*      className="form-check-input mx-2"*/}
+                  {/*    />*/}
+                  {/*    <label className="form-check-lable">Not approved</label>*/}
+                  {/*  </li>*/}
+                  {/*</ul>*/}
                 </ul>
               </div>
             </div>
